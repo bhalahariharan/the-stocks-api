@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [100],
+  "eslint.alwaysShowStatus": true,
+  "git.autofetch": true,
+  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
