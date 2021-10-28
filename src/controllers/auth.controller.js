@@ -1,7 +1,6 @@
 import { validationResult } from 'express-validator';
 
 import authService from '../services/auth.service.js';
-import utils from '../utils.js';
 
 async function login(req, res, next) {
   try {
