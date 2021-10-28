@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import config from './config/config.js';
+import routes from './routes/index.js';
 
 const app = express();
 
@@ -15,6 +16,8 @@ mongoose.connect(config.dbUrl).then(() => {
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
+
+app.use(routes);
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
