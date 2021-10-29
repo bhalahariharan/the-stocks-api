@@ -18,7 +18,17 @@ router.get(
     .optional()
     .matches(constants.REGEX.NUMBERS)
     .withMessage('pageSize should contain only numbers'),
-  stocksAndEtfsController.getAllEtfs
+  stocksAndEtfsController.getCompanies
+);
+
+router.get(
+  '/:symbol',
+  authMiddleware.authenticateToken,
+  query('duration')
+    .optional()
+    .isIn(constants.STOCK_ETF_DURATIONS)
+    .withMessage(`duration should be one of ${constants.STOCK_ETF_DURATIONS.join(', ')}`),
+  stocksAndEtfsController.getStockEtfData
 );
 
 export default router;
