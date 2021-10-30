@@ -1,5 +1,6 @@
 import Company from '../models/company.model.js';
 import Stock from '../models/stock.model.js';
+import Etf from '../models/etf.model.js';
 import constants from '../constants.js';
 
 async function findCompaniesByEquityType({ equityType, page, pageSize }) {
@@ -21,9 +22,11 @@ async function findCompany({ symbol, equityType }) {
   return company;
 }
 
-async function findStockData({ symbol, duration }) {
+async function findStockData({ equityType, symbol, duration }) {
   const durationInMs = constants.STOCK_ETF_DURATIONS_IN_MS[duration];
-  const stockData = await Stock.aggregate([
+  const model = equityType === constants.EQUITY_TYPES.STOCK ? Stock : Etf;
+
+  const stockData = await model.aggregate([
     { $match: { symbol } },
     { $sort: { date: -1 } },
     { $project: { close: '$adjClose', date: 1 } },

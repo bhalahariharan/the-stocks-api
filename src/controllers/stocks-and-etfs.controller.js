@@ -40,7 +40,7 @@ async function getStockEtfData(req, res, next) {
       return res.status(404).send({ message: 'Company not found' });
     }
 
-    const stockData = await stocksAndEtfService.findStockData({ symbol, duration });
+    const stockData = await stocksAndEtfService.findStockData({ equityType, symbol, duration });
     const currentPrice = stocksAndEtfService.getCurrentPrice(stockData);
     const { changeInValue, changeInPercentage } = stocksAndEtfService.calculateReturns(stockData);
     const standardDeviation = stocksAndEtfService.calculateStandardDeviation(stockData);
