@@ -1,5 +1,5 @@
 const config = {
-  port: 3001,
+  port: process.env.PORT || 3001,
   dbUrl: {
     local: 'mongodb://localhost:27017/the-stocks?retryWrites=true&w=majority',
     prod: 'mongodb+srv://readOnly:8tB0HC4UWwfWf9wo@the-stocks.zqgao.mongodb.net/the-stocks?retryWrites=true&w=majority',
