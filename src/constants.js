@@ -15,5 +15,12 @@ const STOCK_ETF_DURATIONS_IN_MS = {
   '3Y': 94672800000,
   '5Y': 157788000000,
 };
+const WHITELISTED_URLS = ['http://localhost:3000', 'https://the-stocks.surge.sh'];
 
-export default { REGEX, EQUITY_TYPES, STOCK_ETF_DURATIONS, STOCK_ETF_DURATIONS_IN_MS };
+export default {
+  REGEX,
+  EQUITY_TYPES,
+  STOCK_ETF_DURATIONS,
+  STOCK_ETF_DURATIONS_IN_MS,
+  WHITELISTED_URLS,
+};

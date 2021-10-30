@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import config, { getDbUrl } from './config/config.js';
+import constants from './constants.js';
 import routes from './routes/index.js';
 
 const app = express();
@@ -15,7 +16,17 @@ mongoose.connect(getDbUrl()).then(() => {
   });
 });
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (constants.WHITELISTED_URLS.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
 app.use(express.json());
 
 app.use(routes);
